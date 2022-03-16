@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/movies")
 public class MovieController {
@@ -20,14 +22,14 @@ public class MovieController {
     @Autowired
     MovieService movieService;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<Page<MovieDTO>> findAllMovies(Pageable pageable){
-        return movieService.findAll(pageable);
+        return movieService.findAllPage(pageable);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<MovieDTO> findMovie(@PathVariable Long id){
-        return movieService.findById(id);
+    public ResponseEntity<MovieDTO> findMovie(@PathVariable Long id, Pageable page){
+        return movieService.findById(id, page);
     }
 
 }

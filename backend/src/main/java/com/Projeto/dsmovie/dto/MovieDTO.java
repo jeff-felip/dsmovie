@@ -1,8 +1,9 @@
 package com.Projeto.dsmovie.dto;
 
 import com.Projeto.dsmovie.entities.Movie;
+import org.springframework.hateoas.RepresentationModel;
 
-public class MovieDTO {
+public class MovieDTO extends RepresentationModel<MovieDTO> {
 
     private Long id;
     private String title;

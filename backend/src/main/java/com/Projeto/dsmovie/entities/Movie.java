@@ -1,12 +1,16 @@
 package com.Projeto.dsmovie.entities;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "tb_movie")
-public class Movie {
+public class Movie extends RepresentationModel<Movie> implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
